@@ -1,5 +1,4 @@
 package com.hackforchange.reminders;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -12,18 +11,17 @@ import android.os.PowerManager;
 import android.util.Log;
 import com.hackforchange.R;
 import com.hackforchange.backend.reminders.RemindersDAO;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 
 /*
  * Source: http://it-ride.blogspot.com/2010/10/android-implementing-notification.html
  */
 public class NotificationService extends Service {
   private PowerManager.WakeLock mWakeLock;
-  private int reminderid;
 
   /**
    * This is deprecated, but you have to implement it if you're planning on
@@ -75,8 +73,6 @@ public class NotificationService extends Service {
     mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
     mWakeLock.acquire();
 
-    reminderid = intent.getExtras().getInt("reminderid");
-
     // check the global background data setting
     ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
     if (!cm.getBackgroundDataSetting()) {
@@ -97,22 +93,20 @@ public class NotificationService extends Service {
      */
     @Override
     protected Void doInBackground(Void... params) {
-      // first, build a string to show the reminder date and time on the notification
-      ParticipationDAO pDao = new ParticipationDAO(getApplicationContext());
 
-        Calendar c = Calendar.getInstance();
-        DateFormat parser = new SimpleDateFormat("MM/dd/yyyy, EEEE, hh:mm aaa"); // example: 07/04/2013, Thursday, 6:13 PM
-        c.setTimeInMillis(p.getDate());
-        
         // build notification
         Notification notification = new Notification.Builder(getApplicationContext())
           .setSmallIcon(R.drawable.icon)
-          .setContentTitle("Record Attendance")
-          .setContentText(remindersText)
-          .setContentIntent(pendingIntent)
+          .setContentTitle("Take malaria meds")
           .build();
         // Hide the notification after it is clicked
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        
+        // display notification
+      
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notification);
+        return null;
     }
 
     /**

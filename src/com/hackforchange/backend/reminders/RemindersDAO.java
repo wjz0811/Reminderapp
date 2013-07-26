@@ -29,23 +29,9 @@ public class RemindersDAO {
     ArrayList<Reminders> output = null;
     String[] columnsToRead = new String[3];
     columnsToRead[0] = Reminders.COLUMN_ID;
-    columnsToRead[1] = Reminders.COLUMN_ACTIVITYID;
+    columnsToRead[1] = Reminders.COLUMN_INTERVAL;
     columnsToRead[2] = Reminders.COLUMN_REMINDTIME;
     Cursor returnData = readDatabase.query(Reminders.REMINDERS_TABLE, columnsToRead, null, null, null, null, null);
-    output = extractReminders(returnData);
-    return output;
-  }
-
-  public ArrayList<Reminders> getAllRemindersForActivityId(int activityid) {
-    ArrayList<Reminders> output = null;
-    String[] columnsToRead = new String[3];
-    columnsToRead[0] = Reminders.COLUMN_ID;
-    columnsToRead[1] = Reminders.COLUMN_ACTIVITYID;
-    columnsToRead[2] = Reminders.COLUMN_REMINDTIME;
-    String whereClause = Reminders.COLUMN_ACTIVITYID + '=' + activityid;
-    String orderbyClause = Reminders.COLUMN_REMINDTIME+" asc"; // order in ascending order of remind time
-      Cursor returnData = readDatabase.query(Reminders.REMINDERS_TABLE, columnsToRead,
-      whereClause, null, null, null, orderbyClause);
     output = extractReminders(returnData);
     return output;
   }
@@ -61,7 +47,7 @@ public class RemindersDAO {
       // Add the new Reminders to the ArrayList
       Reminders r = new Reminders();
       r.setId(Integer.parseInt(returnData.getString(0)));
-      r.setActivityid(Integer.parseInt(returnData.getString(1)));
+      r.setInterval(Integer.parseInt(returnData.getString(1)));
       r.setRemindTime(returnData.getLong(2));
       output.add(count, r);
       // Advance the Cursor
@@ -73,26 +59,9 @@ public class RemindersDAO {
     return output;
   }
 
-  public Reminders getReminderWithId(int id) {
-    String[] columnsToRead = new String[2];
-    columnsToRead[0] = Reminders.COLUMN_ACTIVITYID;
-    columnsToRead[1] = Reminders.COLUMN_REMINDTIME;
-
-    String whereClause = Reminders.COLUMN_ID + '=' + id;
-    Cursor returnData = readDatabase.query(Reminders.REMINDERS_TABLE, columnsToRead,
-      whereClause, null, null, null, null);
-    returnData.moveToFirst();
-    Reminders r = new Reminders();
-    r.setId(id);
-    r.setActivityid(returnData.getInt(0));
-    r.setRemindTime(returnData.getLong(1));
-    // Return the constructed Reminders object
-    return r;
-  }
-
   public void addReminders(Reminders reminder, Context context) {
     ContentValues newValue = new ContentValues(2);
-    newValue.put(Reminders.COLUMN_ACTIVITYID, reminder.getActivityid());
+    newValue.put(Reminders.COLUMN_INTERVAL, reminder.getInterval());
     newValue.put(Reminders.COLUMN_REMINDTIME, reminder.getRemindTime());
     // Insert the item into the database
     writeDatabase.insert(Reminders.REMINDERS_TABLE, null, newValue);
@@ -101,7 +70,7 @@ public class RemindersDAO {
 
   public void updateReminders(Reminders reminder, Context context) {
     ContentValues newValue = new ContentValues(2);
-    newValue.put(Reminders.COLUMN_ACTIVITYID, reminder.getActivityid());
+    newValue.put(Reminders.COLUMN_INTERVAL, reminder.getInterval());
     newValue.put(Reminders.COLUMN_REMINDTIME, reminder.getRemindTime());
     String whereClause = Reminders.COLUMN_ID + '=' + reminder.getId();
     // Update the item into the database

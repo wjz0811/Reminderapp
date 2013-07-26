@@ -1,7 +1,6 @@
 package com.hackforchange.models.reminders;
 
 import android.database.sqlite.SQLiteDatabase;
-import com.hackforchange.models.activities.Activities;
 
 /**
  * ********************************************************************************************************************
@@ -51,6 +50,10 @@ public class Reminders {
     return _interval;
   }
 
+  public void setInterval(int _interval) {
+		this._interval = _interval;
+}
+  
   public long getRemindTime() {
     return remindTime;
   }
@@ -70,5 +73,6 @@ public class Reminders {
   public Reminders() {
     super();
   }
+
 
 }
