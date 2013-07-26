@@ -1,18 +1,18 @@
 package com.hackforchange.views;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.hackforchange.R;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import android.view.LayoutInflater;
+import com.hackforchange.models.volunteer.Volunteer;
 
 public class VolunteerListAdapter extends ArrayAdapter<Volunteer> {
   Context context;

@@ -2,15 +2,7 @@
 <resources>
 
     <string name="app_name">Malaria Med App</string>
-    <string name="allprojectsactivity_label">All Projects</string>
-    <string name="addprojectactivity_label">Add Project</string>
-    <string name="displayprojectactivity_label">Project Details</string>
-    <string name="editprojectactivity_label">Edit Project</string>
-    <string name="allactivitiesactivity_label">All Activities</string>
-    <string name="addactivitiesactivity_label">Add Activity</string>
-    <string name="displayactivitiesactivity_label">Activity Details</string>
-    <string name="editactivitiesactivity_label">Edit Activity</string>
-    <string name="recordparticipationactivity_label">Record Participation</string>
+    <string name="tabdemoactivity_label">Malaria Med</string>
     <string name="reminder">It is time to take your malaria medicine!</string>
     <string name="testimony">See below for Q &amp; A on the crucial importance of taking malaria medications regularly from our returned Peace Corps Volunteers:</string>
     <string name="science">Malaria is a mosquito-carried deadly disease.</string>
@@ -20,5 +12,5 @@
     <string name="title_activity_tabs">Tabs</string>
     <string name="title_activity_root">Root</string>
     <string name="title_activity_tab_demo">TabDemo</string>
-
+    <string name="allvolunteeractivity_label">Testimony</string>
 </resources>

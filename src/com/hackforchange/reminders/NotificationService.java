@@ -1,20 +1,14 @@
 package com.hackforchange.reminders;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.util.Log;
+
 import com.hackforchange.R;
-import com.hackforchange.backend.reminders.RemindersDAO;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 
 /*

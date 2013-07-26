@@ -1,16 +1,17 @@
 package com.hackforchange.reminders;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
 import com.hackforchange.backend.reminders.RemindersDAO;
 import com.hackforchange.models.reminders.Reminders;
-
-import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * This class receives the boot completed event whenever the phone is started up

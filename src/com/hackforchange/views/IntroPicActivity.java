@@ -1,12 +1,10 @@
 package com.hackforchange.views;
 
-import com.hackforchange.R;
-import com.hackforchange.R.layout;
-import com.hackforchange.R.menu;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+
+import com.hackforchange.R;
 
 public class IntroPicActivity extends Activity {
 	/** Called when the activity is first created. */
@@ -27,7 +25,7 @@ public class IntroPicActivity extends Activity {
 					// do nothing
 				} finally {
 
-					Intent i = new Intent(IntroPicActivity.this, TabDemo.class);
+					Intent i = new Intent(IntroPicActivity.this, TabDemoActivity.class);
 
 					startActivity(i);
 					finish();
