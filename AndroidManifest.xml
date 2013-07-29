@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hackforchange"
-    android:versionCode="1"
-    android:versionName="1.0" >
+          package="com.wjz"
+          android:versionCode="1"
+          android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="16" />
+    <uses-sdk android:minSdkVersion="16"/>
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
-        android:icon="@drawable/icon"
-        android:label="@string/app_name"
-        android:theme="@style/Theme.Vrf" >
+            android:icon="@drawable/icon"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Vrf">
         <activity
-            android:name="com.hackforchange.views.IntroPicActivity"
-            android:label="@string/app_name" >
+                android:name=".views.IntroPicWelcomeActivity"
+                android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        
+
         <activity
-            android:name="com.hackforchange.views.TabDemoActivity"
-            android:label="@string/tabdemoactivity_label" />
-        
+                android:name="com.wjz.views.TabDemoActivity"
+                android:label="@string/tabdemoactivity_label"/>
+
         <activity
-            android:name="com.hackforchange.views.allVolunteerActivity"
-            android:label="@string/allvolunteeractivity_label" />
-        
-        <receiver android:name="com.hackforchange.reminders.NotificationReceiver" >
+                android:name="com.wjz.views.allVolunteerActivity"
+                android:label="@string/allvolunteeractivity_label"/>
+        <activity android:name=".views.AlarmActivity"/>
+        <activity android:name=".views.TestimonyActivity"/>
+        <activity android:name=".views.ScienceActivity"/>
+
+        <receiver android:name="com.wjz.reminders.NotificationReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-        <service android:name="com.hackforchange.reminders.NotificationService" />
-    
-	</application>
+        <service android:name="com.wjz.reminders.NotificationService"/>
+
+    </application>
 
 </manifest>

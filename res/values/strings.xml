@@ -4,7 +4,9 @@
     <string name="app_name">Malaria Med App</string>
     <string name="tabdemoactivity_label">Malaria Med</string>
     <string name="reminder">It is time to take your malaria medicine!</string>
-    <string name="testimony">See below for Q &amp; A on the crucial importance of taking malaria medications regularly from our returned Peace Corps Volunteers:</string>
+    <string name="testimony">See below for Q &amp; A on the crucial importance of taking malaria medications regularly
+        from our returned Peace Corps Volunteers:
+    </string>
     <string name="science">Malaria is a mosquito-carried deadly disease.</string>
     <string name="title_activity_intro_pic">IntroPic</string>
     <string name="action_settings">Settings</string>
@@ -13,4 +15,6 @@
     <string name="title_activity_root">Root</string>
     <string name="title_activity_tab_demo">TabDemo</string>
     <string name="allvolunteeractivity_label">Testimony</string>
+    <string name="email">If you are a RPCV who has experienced combatting malaria, please help us spread accurate information to current
+            Peace Corps Volunteers by submitting your word at innovation (at) peacecorps.gov.</string>
 </resources>
