@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/testimonylistview"
+              android:background="#F7B436">
+
+    <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/homelistitem_background"
+            android:paddingLeft="7dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+
+    <TextView
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            android:textColor="#d6d6d6"
+            android:background="#575757"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
+
+    <TextView
+            android:id="@+id/testimony"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            android:textColor="#d6d6d6"
+            android:background="#575757"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
+    
+    <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            android:textColor="#d6d6d6"
+            android:text="@string/email"
+            android:background="#575757"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
+</LinearLayout>

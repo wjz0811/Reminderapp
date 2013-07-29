@@ -1,0 +1,280 @@
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/sciencetab">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFEBCD"
+           >
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Malaria Facts and General Description"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:background="#008080"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Malaria is a life-threatening disease caused by parasites that are transmitted to people through the bites of infected mosquitoes."
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• In 2010, malaria caused an estimated 660 000 deaths (with an uncertainty range of 490 000 to 836 000), mostly among African children."
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Malaria is preventable and curable."
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Increased malaria prevention and control measures are dramatically reducing the malaria burden in many places."
+                android:textColor="#663300"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Non-immune travellers from malaria-free areas are very vulnerable to the disease when they get infected."
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Doxycycline General Description"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:background="#008080"/>
+
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Benefits"
+                android:textStyle="bold"
+                android:textColor="#000033"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   - Tends to be least expensive antimalarial "
+                android:textColor="#663300"
+                />
+
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Side Effects"
+                android:textStyle="bold"
+                android:textColor="#990000"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   - Persons planning on considerable sun exposure may want to avoid the increased risk of sun sensitivity"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   - For trips of short duration, some people would rather not take medication for 4 weeks after travel"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   -  Doxycycline as an antibiotic has the long-term potential of aiding development of drug-resistant bacteria, but in necessary cases of preventing bacteria-caused malaria FDA still recommends its use."
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Mefloquine General Description"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:background="#008080"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Benefits"
+                android:textStyle="bold"
+                android:textColor="#000033"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   -Good choice for long trips because it is take only weekly"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   - Can be used during pregnancy"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Side Effects"
+                android:textStyle="bold"
+                android:textColor="#990000"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   - Cannot be used in patients with certain psychiatric conditions"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   - Not a good choice for last-minute travelers because drug needs to be started at least 2 weeks prior to travel"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Malarone General Description"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:background="#008080"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Benefits"
+                android:textStyle="bold"
+                android:textColor="#000033"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="   - Very well tolerated medicine with side effects uncommon"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Side Effects (Disadvantages)"
+                android:textStyle="bold"
+                android:textColor="#990000"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="  - Tends to be more expensive than some of the other options (especially for trips of long duration)"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Other Preventive Measures"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:background="#008080"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Bed nets"
+                android:textStyle="bold"
+                android:textColor="#000033"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="  - Bed nets form a protective barrier around people sleeping under them. And bet nets treated with an insecticide are much more protective than untreated nets"
+                android:textColor="#663300"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Bug repellant use"
+                android:textStyle="bold"
+                android:textColor="#000033"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="  - Bug repellant use reduce the risk of being infected by viruses like the West Nile Virus by preventing mosquito bites"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="• Removal of mosquito breeding ground"
+                android:textStyle="bold"
+                android:textColor="#000033"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="  - Indoor residual spraying is the most effective at rapidly reducing malaria transmission because it keep the mosquito vector out of the house for up to 3-6 months"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="  - The mosquito breeding sites may be destroyed by filling depressions that collect water, by draining swamps or by ditching marshy areas to remove standing water"
+                android:textColor="#663300"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                />
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Sources: Center for Disease Control and Prevention, World Health Organization, Drugs.com)"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                />
+
+    </LinearLayout>
+</ScrollView>
