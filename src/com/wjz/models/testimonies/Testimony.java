@@ -13,12 +13,13 @@ public class Testimony {
     private String name;
     private String country;
     private String testimony;
-    private int image;
+    private String imagePath;
 
     // Database table
     public static final String TESTIMONIES_TABLE = "testimonies";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_IMAGEPATH = "imagepath";
     public static final String COLUMN_COUNTRY = "country";
     public static final String COLUMN_TESTIMONY = "testimony";
 
@@ -28,6 +29,7 @@ public class Testimony {
             + "("
             + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_NAME + " text not null, "
+            + COLUMN_IMAGEPATH + " text not null, "
             + COLUMN_COUNTRY + " text not null, "
             + COLUMN_TESTIMONY + " text not null"
             + ");";
@@ -57,12 +59,12 @@ public class Testimony {
         super();
     }
 
-    public int getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public String getName() {

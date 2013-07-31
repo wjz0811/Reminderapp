@@ -17,7 +17,7 @@ import java.io.OutputStream;
  */
 public class GlobalDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_PATH = "/data/data/com.wjz/databases/";
-    public static final String DATABASE_NAME = DATABASE_PATH + "reminderapp.db";
+    public static final String DATABASE_NAME = "reminderapp.db3";
     public static final int DATABASE_VERSION = 1;
     private static GlobalDatabaseHelper gHelper;
     private Context context;
@@ -25,6 +25,18 @@ public class GlobalDatabaseHelper extends SQLiteOpenHelper {
     private GlobalDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
+        if (!databaseExists()) {
+            try {
+                this.getReadableDatabase();
+                copyDataBase();
+                this.close();
+            } catch (IOException ioException) {
+                //database not in /assets
+            }
+        }
+        else
+          this.getWritableDatabase();
+        Reminders.onCreate(this.getWritableDatabase());
     }
 
     public static GlobalDatabaseHelper getInstance(Context context) {
@@ -35,14 +47,6 @@ public class GlobalDatabaseHelper extends SQLiteOpenHelper {
     // Method is called during creation of the database
     @Override
     public void onCreate(SQLiteDatabase db) {
-        if (!databaseExists()) {
-            try {
-                copyDataBase();
-            } catch (IOException ioException) {
-                Testimony.onCreate(db); //database not found even in /assets! Create it anew.
-            }
-        }
-        Reminders.onCreate(db);
     }
 
     // check if database is already in the app's directory
@@ -53,10 +57,12 @@ public class GlobalDatabaseHelper extends SQLiteOpenHelper {
             String myPath = DATABASE_PATH + DATABASE_NAME;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
         } catch (SQLiteException e) {
-            return false; //db doesn't exist as yet
         }
-        checkDB.close();
-        return true;
+        if(null!=checkDB){
+            checkDB.close();
+            return true;
+        }
+        return false;
     }
 
     // copies reminderapp.db from /assets to app's data folder

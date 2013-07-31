@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import com.wjz.backend.GlobalDatabaseHelper;
 import com.wjz.models.testimonies.Testimony;
 
@@ -29,30 +30,26 @@ public class TestimonyDAO {
         if (!readDatabase.isOpen()) {
             readDatabase = opener.getReadableDatabase();
         }
-        if (!writeDatabase.isOpen()) {
-            writeDatabase = opener.getWritableDatabase();
-        }
     }
 
     private void closeDB() {
         if (readDatabase.isOpen()) {
             readDatabase.close();
         }
-        if (writeDatabase.isOpen()) {
-            writeDatabase.close();
-        }
     }
 
     public ArrayList<Testimony> getAllTestimonies() {
         openDB();
         ArrayList<Testimony> output = null;
-        String[] columnsToRead = new String[8];
+        String[] columnsToRead = new String[5];
         columnsToRead[0] = Testimony.COLUMN_ID;
         columnsToRead[1] = Testimony.COLUMN_NAME;
         columnsToRead[2] = Testimony.COLUMN_COUNTRY;
         columnsToRead[3] = Testimony.COLUMN_TESTIMONY;
+        columnsToRead[4] = Testimony.COLUMN_IMAGEPATH;
         Cursor returnData = readDatabase.query(Testimony.TESTIMONIES_TABLE, columnsToRead, null, null, null, null, null);
         output = extractTestimonies(returnData);
+        Log.e("burra", output.size()+"");
         closeDB();
         return output;
     }
@@ -65,13 +62,15 @@ public class TestimonyDAO {
         int count = 0;
         // While there are still values in the return data
         while (!returnData.isAfterLast()) {
-            // Add the new Activities to the ArrayList
+            // Add the new Testimony to the ArrayList
             Testimony testimony = new Testimony();
-            testimony.setId(Integer.parseInt(returnData.getString(4)));
+            testimony.setId(Integer.parseInt(returnData.getString(0)));
+            testimony.setName(returnData.getString(1));
+            testimony.setCountry(returnData.getString(2));
+            testimony.setTestimony(returnData.getString(3));
+            testimony.setImagePath(returnData.getString(4));
+
             output.add(count, testimony);
-            testimony.setName(returnData.getString(0));
-            testimony.setCountry(returnData.getString(1));
-            testimony.setTestimony(returnData.getString(2));
 
             // Advance the Cursor
             returnData.moveToNext();
@@ -82,9 +81,9 @@ public class TestimonyDAO {
         return output;
     }
 
-    public Testimony getTestimoniesWithId(int id) {
+    /*public Testimony getTestimoniesWithId(int id) {
         openDB();
-        String[] columnsToRead = new String[9];
+        String[] columnsToRead = new String[4];
         columnsToRead[0] = Testimony.COLUMN_ID;
         columnsToRead[1] = Testimony.COLUMN_NAME;
         columnsToRead[2] = Testimony.COLUMN_COUNTRY;
@@ -104,7 +103,7 @@ public class TestimonyDAO {
 
     public int addTestimonies(Testimony testimony) {
         openDB();
-        ContentValues newValue = new ContentValues(8);
+        ContentValues newValue = new ContentValues(3);
         newValue.put(Testimony.COLUMN_NAME, testimony.getName());
         newValue.put(Testimony.COLUMN_COUNTRY, testimony.getCountry());
         newValue.put(Testimony.COLUMN_TESTIMONY, testimony.getTestimony());
@@ -141,5 +140,5 @@ public class TestimonyDAO {
         int numItemsDeleted = writeDatabase.delete(Testimony.TESTIMONIES_TABLE, whereClause, null);
         closeDB();
         return numItemsDeleted;
-    }
+    }*/
 }

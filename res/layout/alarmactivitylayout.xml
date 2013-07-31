@@ -49,193 +49,166 @@
                 android:padding="10dp"
                 android:text="Reminders"/>
 
-        <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alignmentMode="alignBounds"
-                android:background="#FFEBCD"
-                android:columnCount="2"
-                android:columnOrderPreserved="false"
-                android:padding="10dp"
-                android:useDefaultMargins="true">
+        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/homelistitem_background"
+                    android:columnCount="2"
+                    android:padding="10dp">
 
             <CheckBox
-                    android:id="@+id/mondayCheckBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
                     android:layout_gravity="fill_horizontal"
                     android:text="Monday"
-                    android:textColor="#663300"
-                    android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:id="@+id/mondayCheckBox"/>
 
             <EditText
                     android:id="@+id/mondayTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:clickable="false"
-                    android:hint="HH:MM AM/PM"
-                    android:inputType="time"
-                    android:textColor="#663300"
-                    android:textColorHint="#663300"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:clickable="false"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@android:color/transparent"
+                    android:inputType="time"
+                    android:hint="HH:MM AM/PM"
+                    android:textColorHint="#969696"/>
 
             <CheckBox
-                    android:id="@+id/tuesdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
                     android:layout_gravity="fill_horizontal"
                     android:text="Tuesday"
-                    android:textColor="#663300"
-                    android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:id="@+id/tuesdayCheckBox"/>
 
             <EditText
                     android:id="@+id/tuesdayTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:hint="HH:MM AM/PM"
-                    android:textColorHint="#663300"
-                    android:inputType="time"
-                    android:textColor="#663300"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@android:color/transparent"
+                    android:inputType="time"
+                    android:hint="HH:MM AM/PM"
+                    android:textColorHint="#969696"/>
 
             <CheckBox
-                    android:id="@+id/wednesdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
                     android:layout_gravity="fill_horizontal"
                     android:text="Wednesday"
-                    android:textColor="#663300"
-                    android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:id="@+id/wednesdayCheckBox"/>
 
             <EditText
                     android:id="@+id/wednesdayTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:hint="HH:MM AM/PM"
-                    android:inputType="time"
-                    android:textColor="#663300"
-                    android:textColorHint="#663300"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@android:color/transparent"
+                    android:inputType="time"
+                    android:hint="HH:MM AM/PM"
+                    android:textColorHint="#969696"/>
 
             <CheckBox
-                    android:id="@+id/thursdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
                     android:layout_gravity="fill_horizontal"
                     android:text="Thursday"
-                    android:textColor="#663300"
-                    android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:id="@+id/thursdayCheckBox"/>
 
             <EditText
                     android:id="@+id/thursdayTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:hint="HH:MM AM/PM"
-                    android:inputType="time"
-                    android:textColor="#663300"
-                    android:textColorHint="#663300"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@android:color/transparent"
+                    android:inputType="time"
+                    android:hint="HH:MM AM/PM"
+                    android:textColorHint="#969696"/>
 
             <CheckBox
-                    android:id="@+id/fridayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
                     android:layout_gravity="fill_horizontal"
                     android:text="Friday"
-                    android:textColor="#663300"
-                    android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:id="@+id/fridayCheckBox"/>
 
             <EditText
                     android:id="@+id/fridayTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:hint="HH:MM AM/PM"
-                    android:inputType="time"
-                    android:textColor="#663300"
-                    android:textColorHint="#663300"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@android:color/transparent"
+                    android:inputType="time"
+                    android:hint="HH:MM AM/PM"
+                    android:textColorHint="#969696"/>
 
             <CheckBox
-                    android:id="@+id/saturdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
                     android:layout_gravity="fill_horizontal"
                     android:text="Saturday"
-                    android:textColor="#663300"
-                    android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:id="@+id/saturdayCheckBox"/>
 
             <EditText
                     android:id="@+id/saturdayTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:hint="HH:MM AM/PM"
-                    android:inputType="time"
-                    android:textColor="#663300"
-                    android:textColorHint="#663300"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@android:color/transparent"
+                    android:inputType="time"
+                    android:hint="HH:MM AM/PM"
+                    android:textColorHint="#969696"/>
 
             <CheckBox
-                    android:id="@+id/sundayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="19dp"
                     android:layout_gravity="fill_horizontal"
                     android:text="Sunday"
-                    android:textColor="#663300"
-                    android:textSize="19dp"
-                    android:textStyle="bold"/>
+                    android:id="@+id/sundayCheckBox"/>
 
             <EditText
                     android:id="@+id/sundayTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill_horizontal"
-                    android:hint="HH:MM AM/PM"
-                    android:inputType="time"
-                    android:textColor="#663300"
-                    android:textColorHint="#663300"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="19dp"
-                    android:textStyle="bold"/>
-
-            <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_gravity="left|top"
-                    android:layout_row="7"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                <Button
-                        android:id="@+id/submitbutton"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#0099cc"
-                        android:padding="10dp"
-                        android:text="Save"
-                        android:textColor="@android:color/white"
-                        android:textSize="25dp"
-                        android:textStyle="bold"/>
-            </LinearLayout>
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@android:color/transparent"
+                    android:inputType="time"
+                    android:hint="HH:MM AM/PM"
+                    android:textColorHint="#969696"/>
         </GridLayout>
 
+        <LinearLayout
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+            <Button
+                    android:textSize="25dp"
+                    android:textColor="@android:color/white"
+                    android:background="#0099cc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Save"
+                    android:textStyle="bold"
+                    android:id="@+id/submitbutton"/>
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

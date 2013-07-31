@@ -17,7 +17,7 @@ public class Reminders {
     // Database table
     public static final String REMINDERS_TABLE = "reminders";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_INTERVAL = "_interval"; // foreign key referencing Activity.id
+    public static final String COLUMN_INTERVAL = "_interval";
     public static final String COLUMN_UPDATED = "updated"; //when this reminder was last modified
     public static final String COLUMN_REMINDTIME = "remindtime";
 

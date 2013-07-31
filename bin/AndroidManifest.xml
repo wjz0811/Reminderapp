@@ -30,9 +30,6 @@
         <activity
                 android:name="com.wjz.views.allVolunteerActivity"
                 android:label="@string/allvolunteeractivity_label"/>
-        <activity android:name=".views.AlarmActivity"/>
-        <activity android:name=".views.TestimonyActivity"/>
-        <activity android:name=".views.ScienceActivity"/>
 
         <receiver android:name="com.wjz.reminders.NotificationReceiver">
             <intent-filter>

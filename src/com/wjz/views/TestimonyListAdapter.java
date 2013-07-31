@@ -1,15 +1,24 @@
 package com.wjz.views;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.wjz.R;
 import com.wjz.models.testimonies.Testimony;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class TestimonyListAdapter extends ArrayAdapter<Testimony> {
@@ -36,7 +45,7 @@ public class TestimonyListAdapter extends ArrayAdapter<Testimony> {
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new ProjectHolder();
-            //holder.image = (ImageView) row.findViewById(R.id.image);
+            holder.image = (ImageView) row.findViewById(R.id.image);
             holder.name = (TextView) row.findViewById(R.id.name);
             holder.country = (TextView) row.findViewById(R.id.country);
             holder.testimony = (TextView) row.findViewById(R.id.testimony);
@@ -44,12 +53,30 @@ public class TestimonyListAdapter extends ArrayAdapter<Testimony> {
             row.setTag(holder);
         } else
             holder = (ProjectHolder) row.getTag();
+
+        Testimony t = data.get(position);
+        holder.name.setText(t.getName());
+        holder.country.setText(t.getCountry());
+        holder.testimony.setText(t.getTestimony());
+
+        // set the thumbnail
+        AssetManager assetManager = context.getAssets();
+        InputStream istr;
+        try {
+            istr = assetManager.open(t.getImagePath());
+            Bitmap bitmap = BitmapFactory.decodeStream(istr);
+            holder.image.setImageBitmap(bitmap);
+            istr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return row;
     }
 }
 
 class ProjectHolder {
-    //ImageView image;
+    ImageView image;
     TextView name;
     TextView country;
     TextView testimony;
