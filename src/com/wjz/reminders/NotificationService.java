@@ -4,10 +4,12 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import com.wjz.R;
 
 
@@ -88,16 +90,19 @@ public class NotificationService extends Service {
         @Override
         protected Void doInBackground(Void... params) {
 
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+            String medicineName = sharedPreferences.getString("medicineName", null);
+
             // build notification
             Notification notification = new Notification.Builder(getApplicationContext())
                     .setSmallIcon(R.drawable.icon)
                     .setContentTitle("Take malaria meds")
+                    .setContentText(medicineName)
                     .build();
             // Hide the notification after it is clicked
             notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
             // display notification
-
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notificationManager.notify(0, notification);
             return null;

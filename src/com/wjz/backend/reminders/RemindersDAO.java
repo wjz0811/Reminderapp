@@ -27,10 +27,9 @@ public class RemindersDAO {
 
     public ArrayList<Reminders> getAllReminders() {
         ArrayList<Reminders> output = null;
-        String[] columnsToRead = new String[3];
+        String[] columnsToRead = new String[2];
         columnsToRead[0] = Reminders.COLUMN_ID;
-        columnsToRead[1] = Reminders.COLUMN_INTERVAL;
-        columnsToRead[2] = Reminders.COLUMN_REMINDTIME;
+        columnsToRead[1] = Reminders.COLUMN_REMINDTIME;
         Cursor returnData = readDatabase.query(Reminders.REMINDERS_TABLE, columnsToRead, null, null, null, null, null);
         output = extractReminders(returnData);
         return output;
@@ -47,8 +46,7 @@ public class RemindersDAO {
             // Add the new Reminders to the ArrayList
             Reminders r = new Reminders();
             r.setId(Integer.parseInt(returnData.getString(0)));
-            r.setInterval(Integer.parseInt(returnData.getString(1)));
-            r.setRemindTime(returnData.getLong(2));
+            r.setRemindTime(returnData.getLong(1));
             output.add(count, r);
             // Advance the Cursor
             returnData.moveToNext();
@@ -60,8 +58,7 @@ public class RemindersDAO {
     }
 
     public void addReminders(Reminders reminder, Context context) {
-        ContentValues newValue = new ContentValues(2);
-        newValue.put(Reminders.COLUMN_INTERVAL, reminder.getInterval());
+        ContentValues newValue = new ContentValues(1);
         newValue.put(Reminders.COLUMN_REMINDTIME, reminder.getRemindTime());
         // Insert the item into the database
         writeDatabase.insert(Reminders.REMINDERS_TABLE, null, newValue);
@@ -69,8 +66,7 @@ public class RemindersDAO {
     }
 
     public void updateReminders(Reminders reminder, Context context) {
-        ContentValues newValue = new ContentValues(2);
-        newValue.put(Reminders.COLUMN_INTERVAL, reminder.getInterval());
+        ContentValues newValue = new ContentValues(1);
         newValue.put(Reminders.COLUMN_REMINDTIME, reminder.getRemindTime());
         String whereClause = Reminders.COLUMN_ID + '=' + reminder.getId();
         // Update the item into the database

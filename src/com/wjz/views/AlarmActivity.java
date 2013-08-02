@@ -1,29 +1,34 @@
 package com.wjz.views;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
+import android.app.*;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.*;
 import com.wjz.R;
 import com.wjz.backend.reminders.RemindersDAO;
 import com.wjz.models.reminders.Reminders;
+import com.wjz.reminders.NotificationService;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AlarmActivity extends Activity {
     static final int DATE_DIALOG = 0, TIME_DIALOG = 1;
-    protected int mYear, mMonth, mDay, mHour, mMinute, dayOfWeek;
-    protected EditText title, startDate, endDate, notes, orgs, comms;
-    protected EditText mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime, sundayTime;
-    protected CheckBox mondayCheckbox, tuesdayCheckbox, wednesdayCheckbox, thursdayCheckbox, fridayCheckbox, saturdayCheckbox, sundayCheckbox;
-    protected Button submitButton;
+    private int mYear, mMonth, mDay, mHour, mMinute, dayOfWeek;
+    private EditText mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime, sundayTime;
+    private CheckBox mondayCheckbox, tuesdayCheckbox, wednesdayCheckbox, thursdayCheckbox, fridayCheckbox, saturdayCheckbox, sundayCheckbox;
+    private Button submitButton;
+    private SharedPreferences sharedPreferences;
+    private List<Reminders> remindersList;
     // used because we reuse the same listener for both fields
 
     protected Reminders r;
@@ -37,9 +42,77 @@ public class AlarmActivity extends Activity {
     public void onResume() {
         super.onResume();
 
+        final EditText medicineNameText = (EditText) findViewById(R.id.medicineName);
+
+        // pre-populate the fields with the reminder details from the DB
+        // the user can then change them if he so desires
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String medicineName = sharedPreferences.getString("medicineName", null);
+        medicineNameText.setText(medicineName);
+
+        mondayTime = (EditText) findViewById(R.id.mondayTime);
+        tuesdayTime = (EditText) findViewById(R.id.tuesdayTime);
+        wednesdayTime = (EditText) findViewById(R.id.wednesdayTime);
+        thursdayTime = (EditText) findViewById(R.id.thursdayTime);
+        fridayTime = (EditText) findViewById(R.id.fridayTime);
+        saturdayTime = (EditText) findViewById(R.id.saturdayTime);
+        sundayTime = (EditText) findViewById(R.id.sundayTime);
+
+        mondayCheckbox = (CheckBox) findViewById(R.id.mondayCheckBox);
+        tuesdayCheckbox = (CheckBox) findViewById(R.id.tuesdayCheckBox);
+        wednesdayCheckbox = (CheckBox) findViewById(R.id.wednesdayCheckBox);
+        thursdayCheckbox = (CheckBox) findViewById(R.id.thursdayCheckBox);
+        fridayCheckbox = (CheckBox) findViewById(R.id.fridayCheckBox);
+        saturdayCheckbox = (CheckBox) findViewById(R.id.saturdayCheckBox);
+        sundayCheckbox = (CheckBox) findViewById(R.id.sundayCheckBox);
+
+        RemindersDAO rDao = new RemindersDAO(getApplicationContext());
+        remindersList = rDao.getAllReminders();
+        final SimpleDateFormat parser = new SimpleDateFormat("hh:mm aaa");
+        for (Reminders r : remindersList) {
+            Date d = new Date(r.getRemindTime());
+            Calendar c = Calendar.getInstance();
+            c.setTimeInMillis(r.getRemindTime());
+            switch (c.get(Calendar.DAY_OF_WEEK)) {
+                case Calendar.MONDAY:
+                    mondayCheckbox.setChecked(true);
+                    mondayTime.setText(parser.format(d));
+                    mondayTime.setTag(r.getId()); // will be used to update the reminder
+                    break;
+                case Calendar.TUESDAY:
+                    tuesdayCheckbox.setChecked(true);
+                    tuesdayTime.setText(parser.format(d));
+                    tuesdayTime.setTag(r.getId()); // will be used to update the reminder
+                    break;
+                case Calendar.WEDNESDAY:
+                    wednesdayCheckbox.setChecked(true);
+                    wednesdayTime.setText(parser.format(d));
+                    wednesdayTime.setTag(r.getId()); // will be used to update the reminder
+                    break;
+                case Calendar.THURSDAY:
+                    thursdayCheckbox.setChecked(true);
+                    thursdayTime.setText(parser.format(d));
+                    thursdayTime.setTag(r.getId()); // will be used to update the reminder
+                    break;
+                case Calendar.FRIDAY:
+                    fridayCheckbox.setChecked(true);
+                    fridayTime.setText(parser.format(d));
+                    fridayTime.setTag(r.getId()); // will be used to update the reminder
+                    break;
+                case Calendar.SATURDAY:
+                    saturdayCheckbox.setChecked(true);
+                    saturdayTime.setText(parser.format(d));
+                    saturdayTime.setTag(r.getId()); // will be used to update the reminder
+                    break;
+                case Calendar.SUNDAY:
+                    sundayCheckbox.setChecked(true);
+                    sundayTime.setText(parser.format(d));
+                    sundayTime.setTag(r.getId()); // will be used to update the reminder
+                    break;
+            }
+        }
 
         // entering the reminder time
-        mondayTime = (EditText) findViewById(R.id.mondayTime);
         mondayTime.setFocusableInTouchMode(false); // do this so the date picker opens up on the very first selection of the text field
         // not doing this means the first click simply focuses the text field
         mondayTime.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +127,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        tuesdayTime = (EditText) findViewById(R.id.tuesdayTime);
         tuesdayTime.setFocusableInTouchMode(false); // do this so the date picker opens up on the very first selection of the text field
         // not doing this means the first click simply focuses the text field
         tuesdayTime.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +141,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        wednesdayTime = (EditText) findViewById(R.id.wednesdayTime);
         wednesdayTime.setFocusableInTouchMode(false); // do this so the date picker opens up on the very first selection of the text field
         // not doing this means the first click simply focuses the text field
         wednesdayTime.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +155,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        thursdayTime = (EditText) findViewById(R.id.thursdayTime);
         thursdayTime.setFocusableInTouchMode(false); // do this so the date picker opens up on the very first selection of the text field
         // not doing this means the first click simply focuses the text field
         thursdayTime.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +169,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        fridayTime = (EditText) findViewById(R.id.fridayTime);
         fridayTime.setFocusableInTouchMode(false); // do this so the date picker opens up on the very first selection of the text field
         // not doing this means the first click simply focuses the text field
         fridayTime.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +183,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        saturdayTime = (EditText) findViewById(R.id.saturdayTime);
         saturdayTime.setFocusableInTouchMode(false); // do this so the date picker opens up on the very first selection of the text field
         // not doing this means the first click simply focuses the text field
         saturdayTime.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +197,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        sundayTime = (EditText) findViewById(R.id.sundayTime);
         sundayTime.setFocusableInTouchMode(false); // do this so the date picker opens up on the very first selection of the text field
         // not doing this means the first click simply focuses the text field
         sundayTime.setOnClickListener(new View.OnClickListener() {
@@ -144,9 +211,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        title = (EditText) findViewById(R.id.title);
-
-        mondayCheckbox = (CheckBox) findViewById(R.id.mondayCheckBox);
         mondayCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +219,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        tuesdayCheckbox = (CheckBox) findViewById(R.id.tuesdayCheckBox);
         tuesdayCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,7 +227,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        wednesdayCheckbox = (CheckBox) findViewById(R.id.wednesdayCheckBox);
         wednesdayCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,7 +235,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        thursdayCheckbox = (CheckBox) findViewById(R.id.thursdayCheckBox);
         thursdayCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +243,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        fridayCheckbox = (CheckBox) findViewById(R.id.fridayCheckBox);
         fridayCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,7 +251,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        saturdayCheckbox = (CheckBox) findViewById(R.id.saturdayCheckBox);
         saturdayCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -200,7 +259,6 @@ public class AlarmActivity extends Activity {
             }
         });
 
-        sundayCheckbox = (CheckBox) findViewById(R.id.sundayCheckBox);
         sundayCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,13 +268,20 @@ public class AlarmActivity extends Activity {
         });
 
         submitButton = (Button) findViewById(R.id.submitbutton);
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(medicineNameText.getText().toString().isEmpty())
+                    return;
 
-                // save reminders for this activity to the reminders table
+                // save medicine name that the user entered
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("medicineName", medicineNameText.getText().toString());
+                editor.commit();
+
+                // save reminders for this alarm to the reminders table
                 RemindersDAO rDao = new RemindersDAO(getApplicationContext());
-                SimpleDateFormat parser = new SimpleDateFormat("hh:mm aaa");
 
                 if (mondayCheckbox.isChecked()) {
                     if (mondayTime.getText() != null) {
@@ -231,11 +296,22 @@ public class AlarmActivity extends Activity {
                             c.set(Calendar.MINUTE, date.getMinutes());
                             c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                             r = new Reminders();
-
                             r.setRemindTime(c.getTimeInMillis());
-                            rDao.addReminders(r, getApplicationContext());
+
+                            if (mondayTime.getTag() != null) { // updating an existing reminder
+                                r.setId((Integer) mondayTime.getTag()); // retrieve the id of this reminder
+                                rDao.updateReminders(r, getApplicationContext());
+                            } else { // add a new reminder
+                                rDao.addReminders(r, getApplicationContext());
+                            }
                         } catch (ParseException e) {
                         }
+                    }
+                } else { // box was unchecked, remove any associated reminder for this day
+                    if (mondayTime.getTag() != null) {
+                        int reminderid = (Integer) mondayTime.getTag();
+                        rDao.deleteReminders(reminderid, getApplicationContext());
+                        AlarmActivity.deleteAlarmsForReminder(getApplicationContext(), reminderid);
                     }
                 }
 
@@ -252,11 +328,23 @@ public class AlarmActivity extends Activity {
                             c.set(Calendar.MINUTE, date.getMinutes());
                             c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
                             r = new Reminders();
-
                             r.setRemindTime(c.getTimeInMillis());
-                            rDao.addReminders(r, getApplicationContext());
+
+                            if (tuesdayTime.getTag() != null) { // updating an existing reminder
+                                r.setId((Integer) tuesdayTime.getTag()); // retrieve the id of this reminder
+                                rDao.updateReminders(r, getApplicationContext());
+                            } else { // add a new reminder
+                                rDao.addReminders(r, getApplicationContext());
+                            }
                         } catch (ParseException e) {
                         }
+                    }
+                }
+                else { // box was unchecked, remove any associated reminder for this day
+                    if (tuesdayTime.getTag() != null) {
+                        int reminderid = (Integer) tuesdayTime.getTag();
+                        rDao.deleteReminders(reminderid, getApplicationContext());
+                        AlarmActivity.deleteAlarmsForReminder(getApplicationContext(), reminderid);
                     }
                 }
 
@@ -273,11 +361,23 @@ public class AlarmActivity extends Activity {
                             c.set(Calendar.MINUTE, date.getMinutes());
                             c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
                             r = new Reminders();
-
                             r.setRemindTime(c.getTimeInMillis());
-                            rDao.addReminders(r, getApplicationContext());
+
+                            if (wednesdayTime.getTag() != null) { // updating an existing reminder
+                                r.setId((Integer) wednesdayTime.getTag()); // retrieve the id of this reminder
+                                rDao.updateReminders(r, getApplicationContext());
+                            } else { // add a new reminder
+                                rDao.addReminders(r, getApplicationContext());
+                            }
                         } catch (ParseException e) {
                         }
+                    }
+                }
+                else { // box was unchecked, remove any associated reminder for this day
+                    if (wednesdayTime.getTag() != null) {
+                        int reminderid = (Integer) wednesdayTime.getTag();
+                        rDao.deleteReminders(reminderid, getApplicationContext());
+                        AlarmActivity.deleteAlarmsForReminder(getApplicationContext(), reminderid);
                     }
                 }
 
@@ -294,11 +394,23 @@ public class AlarmActivity extends Activity {
                             c.set(Calendar.MINUTE, date.getMinutes());
                             c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
                             r = new Reminders();
-
                             r.setRemindTime(c.getTimeInMillis());
-                            rDao.addReminders(r, getApplicationContext());
+
+                            if (thursdayTime.getTag() != null) { // updating an existing reminder
+                                r.setId((Integer) thursdayTime.getTag()); // retrieve the id of this reminder
+                                rDao.updateReminders(r, getApplicationContext());
+                            } else { // add a new reminder
+                                rDao.addReminders(r, getApplicationContext());
+                            }
                         } catch (ParseException e) {
                         }
+                    }
+                }
+                else { // box was unchecked, remove any associated reminder for this day
+                    if (thursdayTime.getTag() != null) {
+                        int reminderid = (Integer) thursdayTime.getTag();
+                        rDao.deleteReminders(reminderid, getApplicationContext());
+                        AlarmActivity.deleteAlarmsForReminder(getApplicationContext(), reminderid);
                     }
                 }
 
@@ -315,11 +427,23 @@ public class AlarmActivity extends Activity {
                             c.set(Calendar.MINUTE, date.getMinutes());
                             c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
                             r = new Reminders();
-
                             r.setRemindTime(c.getTimeInMillis());
-                            rDao.addReminders(r, getApplicationContext());
+
+                            if (fridayTime.getTag() != null) { // updating an existing reminder
+                                r.setId((Integer) fridayTime.getTag()); // retrieve the id of this reminder
+                                rDao.updateReminders(r, getApplicationContext());
+                            } else { // add a new reminder
+                                rDao.addReminders(r, getApplicationContext());
+                            }
                         } catch (ParseException e) {
                         }
+                    }
+                }
+                else { // box was unchecked, remove any associated reminder for this day
+                    if (fridayTime.getTag() != null) {
+                        int reminderid = (Integer) fridayTime.getTag();
+                        rDao.deleteReminders(reminderid, getApplicationContext());
+                        AlarmActivity.deleteAlarmsForReminder(getApplicationContext(), reminderid);
                     }
                 }
 
@@ -336,11 +460,23 @@ public class AlarmActivity extends Activity {
                             c.set(Calendar.MINUTE, date.getMinutes());
                             c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
                             r = new Reminders();
-
                             r.setRemindTime(c.getTimeInMillis());
-                            rDao.addReminders(r, getApplicationContext());
+
+                            if (saturdayTime.getTag() != null) { // updating an existing reminder
+                                r.setId((Integer) saturdayTime.getTag()); // retrieve the id of this reminder
+                                rDao.updateReminders(r, getApplicationContext());
+                            } else { // add a new reminder
+                                rDao.addReminders(r, getApplicationContext());
+                            }
                         } catch (ParseException e) {
                         }
+                    }
+                }
+                else { // box was unchecked, remove any associated reminder for this day
+                    if (saturdayTime.getTag() != null) {
+                        int reminderid = (Integer) saturdayTime.getTag();
+                        rDao.deleteReminders(reminderid, getApplicationContext());
+                        AlarmActivity.deleteAlarmsForReminder(getApplicationContext(), reminderid);
                     }
                 }
 
@@ -358,11 +494,25 @@ public class AlarmActivity extends Activity {
                             c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
                             r = new Reminders();
                             r.setRemindTime(c.getTimeInMillis());
-                            rDao.addReminders(r, getApplicationContext());
+
+                            if (sundayTime.getTag() != null) { // updating an existing reminder
+                                r.setId((Integer) sundayTime.getTag()); // retrieve the id of this reminder
+                                rDao.updateReminders(r, getApplicationContext());
+                            } else { // add a new reminder
+                                rDao.addReminders(r, getApplicationContext());
+                            }
                         } catch (ParseException e) {
                         }
                     }
                 }
+                else { // box was unchecked, remove any associated reminder for this day
+                    if (sundayTime.getTag() != null) {
+                        int reminderid = (Integer) sundayTime.getTag();
+                        rDao.deleteReminders(reminderid, getApplicationContext());
+                        AlarmActivity.deleteAlarmsForReminder(getApplicationContext(), reminderid);
+                    }
+                }
+
                 finish();
             }
         });
@@ -447,6 +597,18 @@ public class AlarmActivity extends Activity {
                 }
         }
         return null;
+    }
+
+    // remove all the alarms associated with a reminder
+    // also used by AllActivitiesActivity and DisplayActivitiesActivity
+    public static void deleteAlarmsForReminder(Context context, int reminderid) {
+        Intent notifIntent = new Intent(context, NotificationService.class);
+        notifIntent.putExtra("reminderid", reminderid); // not necessary for alarmManager.cancel to match pending intents but leaving it here anyway
+        notifIntent.setAction(Intent.ACTION_VIEW); // unpredictable android crap again. without an action, the extras will NOT be sent!!
+        PendingIntent pendingIntent = PendingIntent.getService(context, reminderid, notifIntent, PendingIntent.FLAG_UPDATE_CURRENT); // remember to distinguish between pendingintents using Reminders.id as the request code
+        pendingIntent.cancel();
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
     }
 
 }

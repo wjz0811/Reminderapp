@@ -14,7 +14,6 @@ public class TestimonyActivity extends Activity {
     private ListView testimonyListView;
     private List<Testimony> testimony_data;
 
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.testimonyactivitylayout);

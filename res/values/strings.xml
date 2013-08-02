@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="email">Add your voice <a href ="mailto:http://www.stackoverflow.com">here</a></string>
     <string name="app_name">Malaria Med App</string>
     <string name="tabdemoactivity_label">Malaria Med</string>
     <string name="reminder">It is time to take your malaria medicine!</string>
@@ -15,4 +15,5 @@
     <string name="title_activity_root">Root</string>
     <string name="title_activity_tab_demo">TabDemo</string>
     <string name="allvolunteeractivity_label">Testimony</string>
+
 </resources>

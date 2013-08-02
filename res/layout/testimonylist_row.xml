@@ -1,65 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
+              android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:id="@+id/testimonylistview"
-              android:background="#F7B436">
+              android:background="#E0E0E0"
+              android:padding="2dp"
+        >
+  
+    
+    <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:padding="1dp"/>
+  
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="horizontal"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:id="@+id/testimonylistview"
-                  android:background="#F7B436">
-
-        <TextView
+        <!-- <TextView
                 android:id="@+id/name"
-                android:layout_width="0dp"
+                android:background="#E0E0E0"
                 tools:ignore="Suspicious0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:textColor="#ffffff"
-                android:background="@drawable/homelistitem_background"
-                android:paddingLeft="7dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"/>
-
-        <ImageView
-                android:id="@+id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"/>
+                android:textSize="15dp"
+                android:textColor="#003e7c"/> -->
 
+        <TextView
+                android:id="@+id/testimony"
+                android:background="#E0E0E0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                />
     </LinearLayout>
 
-    <TextView
-            android:id="@+id/country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textStyle="bold"
-            android:textSize="19dp"
-            android:textColor="#d6d6d6"
-            android:background="#575757"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"/>
-
-    <TextView
-            android:id="@+id/testimony"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textStyle="bold"
-            android:textSize="19dp"
-            android:textColor="#d6d6d6"
-            android:background="#575757"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"/>
 </LinearLayout>

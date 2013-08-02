@@ -17,11 +17,7 @@ public class IntroPicWelcomeActivity extends Activity {
             @Override
             public void run() {
                 try {
-                    int waited = 0;
-                    while (waited < 1000) {
-                        sleep(100);
-                        waited += 100;
-                    }
+                    sleep(1000);
                 } catch (InterruptedException e) {
                     // do nothing
                 } finally {

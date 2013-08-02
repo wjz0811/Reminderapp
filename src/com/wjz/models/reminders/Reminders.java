@@ -12,12 +12,10 @@ public class Reminders {
     // Instance properties
     private int id;
     private long remindTime;
-    private int _interval;
 
     // Database table
     public static final String REMINDERS_TABLE = "reminders";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_INTERVAL = "_interval";
     public static final String COLUMN_UPDATED = "updated"; //when this reminder was last modified
     public static final String COLUMN_REMINDTIME = "remindtime";
 
@@ -26,7 +24,6 @@ public class Reminders {
             + REMINDERS_TABLE
             + "("
             + COLUMN_ID + " integer primary key autoincrement, "
-            + COLUMN_INTERVAL + " integer not null, "
             + COLUMN_UPDATED + " integer not null default (strftime('%s','now')), "
             + COLUMN_REMINDTIME + " integer not null"
 
@@ -46,14 +43,6 @@ public class Reminders {
     }
 
     // Getters and Setters follow
-    public int getInterval() {
-        return _interval;
-    }
-
-    public void setInterval(int _interval) {
-        this._interval = _interval;
-    }
-
     public long getRemindTime() {
         return remindTime;
     }
@@ -73,6 +62,4 @@ public class Reminders {
     public Reminders() {
         super();
     }
-
-
 }

@@ -7,14 +7,19 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+          
+           >
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Malaria Facts and General Description"
-                android:textStyle="bold"
-                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:background="#32343A"
+                android:padding="10dp"
+                android:text="Malaria General Description"
                 />
 
         <TextView
@@ -29,16 +34,17 @@
                 android:text="• In 2010, malaria caused an estimated 660 000 deaths (with an uncertainty range of 490 000 to 836 000), mostly among African children."
                 />
 
-        <TextView
+       <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="• Malaria is preventable and curable."/>
+                android:text="• Malaria is preventable and curable."
+                />
 
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="• Increased malaria prevention and control measures are dramatically reducing the malaria burden in many places."/>
-
+                android:text="• Increased malaria prevention and control measures are dramatically reducing the malaria burden in many places."
+                />
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -51,11 +57,14 @@
                 />
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:background="#32343A"
+                android:padding="10dp"
                 android:text="Doxycycline General Description"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 />
 
 
@@ -64,22 +73,24 @@
                 android:layout_height="wrap_content"
                 android:text="• Benefits"
                 android:textStyle="bold"
+                
                 />
 
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="   - Tends to be least expensive antimalarial "
+                
                 />
-
 
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="• Side Effects"
                 android:textStyle="bold"
+                
                 />
-
+        
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -104,11 +115,14 @@
                 />
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:background="#32343A"
+                android:padding="10dp"
                 android:text="Mefloquine General Description"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 />
 
         <TextView
@@ -135,6 +149,7 @@
                 android:layout_height="wrap_content"
                 android:text="• Side Effects"
                 android:textStyle="bold"
+                
                 />
 
         <TextView
@@ -155,11 +170,14 @@
                 />
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:background="#32343A"
+                android:padding="10dp"
                 android:text="Malarone General Description"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 />
 
         <TextView
@@ -176,17 +194,16 @@
                 />
 
         <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="• Side Effects (Disadvantages)"
-                android:textStyle="bold"
-                />
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:text="• Side Effects"
+            android:textStyle="bold" />
 
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="  - Tends to be more expensive than some of the other options (especially for trips of long duration)"
-                />
+               />
 
         <TextView
                 android:layout_width="fill_parent"
@@ -194,17 +211,20 @@
                 />
 
         <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:background="#32343A"
+                android:padding="10dp"
                 android:text="Other Preventive Measures"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 />
 
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="• Bed nets"
+                android:text="• Bed nets"             
                 android:textStyle="bold"
                 />
 
@@ -212,7 +232,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="  - Bed nets form a protective barrier around people sleeping under them. And bet nets treated with an insecticide are much more protective than untreated nets"
-
+                
                 />
 
         <TextView
@@ -233,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:text="• Removal of mosquito breeding ground"
                 android:textStyle="bold"
-                />
+               />
 
         <TextView
                 android:layout_width="fill_parent"

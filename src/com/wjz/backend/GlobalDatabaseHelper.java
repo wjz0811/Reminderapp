@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import com.wjz.models.reminders.Reminders;
 import com.wjz.models.testimonies.Testimony;
 
@@ -57,6 +58,7 @@ public class GlobalDatabaseHelper extends SQLiteOpenHelper {
             String myPath = DATABASE_PATH + DATABASE_NAME;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
         } catch (SQLiteException e) {
+            Log.i("burra","Database "+DATABASE_PATH+DATABASE_NAME+"not found. Will copy from assets folder");
         }
         if(null!=checkDB){
             checkDB.close();
